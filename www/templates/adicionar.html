@@ -1,0 +1,35 @@
+<ion-view view-title="Playlists">
+  <ion-content>
+    <form name="formulario" ng-submit="addCandy()">      
+      <div class="list ">
+        <label class="item item-input item-stacked-label">
+          <span class="input-label">Nombre</span>
+          <input type="text" placeholder="Nombre del dulce" ng-model="formCandy.nombre" />
+        </label>
+        <label class="item item-input item-stacked-label">
+          <span class="input-label">Valor</span>
+          <input type="number" placeholder="Precio del paquete" ng-model="formCandy.valorPaquete" />
+        </label>
+      </div>
+        <h3>Seleccionar imagen</h3>
+      <div class="list list-inset">
+       <label for="porDefecto" class="item item-radio">
+         <input name="porDefecto" type="radio" class="radio-icon ion-checkmark" value="porDefecto" ng-model="formCandy.imgTipo" checked/> 
+         <div class="item-content">Por defecto</div>
+         <i class="radio-icon ion-checkmark"></i>            
+       </label>
+       <label for="galeria" class="item item-radio">
+         <input name="galeria" type="radio" class="radio-icon ion-checkmark" ng-model="formCandy.imgTipo" value="galeria" /> 
+         <div class="item-content">Desde galeria</div>
+         <i class="radio-icon ion-checkmark"></i>            
+       </label>
+       <label for="camara" class="item item-radio">
+         <input name="camara" type="radio" class="radio-icon ion-checkmark" ng-model="formCandy.imgTipo" value="camara" /> 
+         <div class="item-content">Capturar imagen</div>
+         <i class="radio-icon ion-checkmark"></i>            
+       </label>        
+      </div>
+      <input type="submit" class="button button-block button-assertive" value="Guardar"/> 
+    </form>
+  </ion-content>
+</ion-view>

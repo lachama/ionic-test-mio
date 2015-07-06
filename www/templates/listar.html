@@ -1,0 +1,12 @@
+<ion-view view-title="Playlists :D">
+  <ion-content>
+    <ion-list>
+         <div class="list">
+            <a class="item item-avatar" href="#/app/playlists/{{dulce.id}}" ng-repeat="dulce in candies">
+              <img ng-src="{{dulce.img}}">
+              <h2>{{dulce.nombre}}</h2>
+            </a>
+          </div>
+    </ion-list>
+  </ion-content>
+</ion-view>
