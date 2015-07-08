@@ -1,24 +1,14 @@
 angular.module('starter.controllers')
 
-.controller('AdicionarController', function($scope) {
-  // var scope = this;
-
-  // console.log("-----------2");
-  // console.log(scope);
-  $scope.listCandies = [];
+.controller('AdicionarController', function($scope, obtenerLista) {
+  //$scope.listCandies = [];
 
   $scope.addCandy = function() {
-    console.log("1---------->");
-    console.log($scope.formCandy.valorPaquete);
-    $scope.listCandies.push($scope.formCandy);
-   
-    console.log("2---------->");
-    console.log($scope.listCandies);
+    //$scope.listCandies.push($scope.formCandy);
+    //$scope.formCandy = "";
+    console.log("-----------------");
+    console.log($scope.formCandy);
+    obtenerLista.writeData($scope.formCandy);
     $scope.formCandy = "";
-
-    
-    //
-    
-   
   };
 });

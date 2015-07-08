@@ -4,7 +4,7 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova'])
+angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova', 'firebase'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -92,6 +92,26 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova'])
   });
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/app/playlists');
+})
+.factory("obtenerLista", function($firebaseArray){
+  var myFirebaseRef = new Firebase("https://blazing-inferno-5723.firebaseIO.com/"); 
+  var interfaz = {
+    writeData: function(datoss) {
+      myFirebaseRef.push(datoss); 
+    },
+    readData: function() {
+      console.log("-------1");
+      return  $firebaseArray;
+      // myFirebaseRef.once("value", function(snapshot) {
+      //   console.log("entro!");
+      //   console.log(snapshot.val());
+      //   return snapshot.val();
+      // }, function (errorObject) {
+      //   return null;
+      // });
+    }
+  };
+  return interfaz;
 });
 
 angular.module('starter.controllers', []);

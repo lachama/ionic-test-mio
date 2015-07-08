@@ -1,3 +1,4 @@
 1. diferencia entre ng-src y src solito
 2. Que pasa si necesito un radio button con diseño de "bolita" en vez de los tipo input que propone Ionic? Se pueden usar sin problema?
 3. This? en la controladora hija
+4. Como hago para ver los errores en el navegador (o en otra parte) que me muestra el gulp watch. Cuando hay un error en un js y gulp watch no arranca. O sea que cada vez que hay un error debo reiniciar el gulp?

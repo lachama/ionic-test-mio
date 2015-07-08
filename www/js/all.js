@@ -4,7 +4,7 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova'])
+angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova', 'firebase'])
 
 .run(["$ionicPlatform", function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -92,6 +92,26 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova'])
   });
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/app/playlists');
+}])
+.factory("obtenerLista", ["$firebaseArray", function($firebaseArray){
+  var myFirebaseRef = new Firebase("https://blazing-inferno-5723.firebaseIO.com/"); 
+  var interfaz = {
+    writeData: function(datoss) {
+      myFirebaseRef.push(datoss); 
+    },
+    readData: function() {
+      console.log("-------1");
+      return  $firebaseArray;
+      // myFirebaseRef.once("value", function(snapshot) {
+      //   console.log("entro!");
+      //   console.log(snapshot.val());
+      //   return snapshot.val();
+      // }, function (errorObject) {
+      //   return null;
+      // });
+    }
+  };
+  return interfaz;
 }]);
 
 angular.module('starter.controllers', []);
@@ -123,26 +143,16 @@ angular.module('starter.controllers')
 
 angular.module('starter.controllers')
 
-.controller('AdicionarController', ["$scope", function($scope) {
-  // var scope = this;
-
-  // console.log("-----------2");
-  // console.log(scope);
-  $scope.listCandies = [];
+.controller('AdicionarController', ["$scope", "obtenerLista", function($scope, obtenerLista) {
+  //$scope.listCandies = [];
 
   $scope.addCandy = function() {
-    console.log("1---------->");
-    console.log($scope.formCandy.valorPaquete);
-    $scope.listCandies.push($scope.formCandy);
-   
-    console.log("2---------->");
-    console.log($scope.listCandies);
+    //$scope.listCandies.push($scope.formCandy);
+    //$scope.formCandy = "";
+    console.log("-----------------");
+    console.log($scope.formCandy);
+    obtenerLista.writeData($scope.formCandy);
     $scope.formCandy = "";
-
-    
-    //
-    
-   
   };
 }]);
 
@@ -159,39 +169,43 @@ angular.module('starter.controllers')
 
 angular.module('starter.controllers')
 
-.controller('ListarCtrl', ["$scope", function($scope) {
-  $scope.candies = [
-    { 
-      nombre: 'Nerd', 
-      id: 1,
-      img: "img/nerds.jpg",
-      valorPaquete:7000
-    },
-    { 
-      nombre: 'Milky Way', 
-      id: 1,
-      img: "img/milkyWay.jpeg",
-      valorPaquete:7000
-    },
-    { 
-      nombre: 'Chiclets Adams', 
-      id: 1,
-      img: "img/chicles_adams.jpg",
-      valorPaquete:7000
-    },
-    { 
-      nombre: 'Pirulin', 
-      id: 1,
-      img: "img/pirulin.jpg",
-      valorPaquete:7000
-    },
-    { 
-      nombre: 'Boleros', 
-      id: 1,
-      img: "img/boleros.JPG",
-      valorPaquete:7000
-    }
-  ];
+.controller('ListarCtrl', ["$scope", "obtenerLista", function($scope, obtenerLista) {
+  console.log("-----------2");
+  console.log(obtenerLista.readData());
+
+
+  // $scope.candies = [
+  //   { 
+  //     nombre: 'Nerd', 
+  //     id: 1,
+  //     img: "img/nerds.jpg",
+  //     valorPaquete:7000
+  //   },
+  //   { 
+  //     nombre: 'Milky Way', 
+  //     id: 1,
+  //     img: "img/milkyWay.jpeg",
+  //     valorPaquete:7000
+  //   },
+  //   { 
+  //     nombre: 'Chiclets Adams', 
+  //     id: 1,
+  //     img: "img/chicles_adams.jpg",
+  //     valorPaquete:7000
+  //   },
+  //   { 
+  //     nombre: 'Pirulin', 
+  //     id: 1,
+  //     img: "img/pirulin.jpg",
+  //     valorPaquete:7000
+  //   },
+  //   { 
+  //     nombre: 'Boleros', 
+  //     id: 1,
+  //     img: "img/boleros.JPG",
+  //     valorPaquete:7000
+  //   }
+  // ];
 }]);
 
 angular.module('starter.controllers')
