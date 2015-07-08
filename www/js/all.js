@@ -138,6 +138,8 @@ angular.module('starter.controllers')
 .controller('AdicionarController', ["$scope", "obtenerLista", function($scope, obtenerLista) {
   //$scope.listCandies = [];
 
+  $scope.formCandy = {imgTipo:"porDefecto"};
+
   $scope.addCandy = function() {
     //$scope.listCandies.push($scope.formCandy);
     //$scope.formCandy = "";
@@ -145,6 +147,20 @@ angular.module('starter.controllers')
     obtenerLista.writeData($scope.formCandy);
     $scope.formCandy = "";
   };
+
+  $scope.optCamera = function (){
+  	console.log($scope.formCandy.imgTipo);
+
+  };
+
+  $scope.optGallery = function (){
+  	console.log($scope.formCandy.imgTipo);
+  };
+
+  $scope.optDefault = function (){
+  	console.log($scope.formCandy.imgTipo);
+  };
+
 }]);
 
 angular.module('some', [])

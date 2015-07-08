@@ -14,17 +14,17 @@
         <h3>Seleccionar imagen</h3>
       <div class="list list-inset">
        <label for="porDefecto" class="item item-radio">
-         <input name="porDefecto" type="radio" class="radio-icon ion-checkmark" value="porDefecto" ng-model="formCandy.imgTipo" checked /> 
+         <input name="porDefecto" type="radio" class="radio-icon ion-checkmark" value="porDefecto" ng-model="formCandy.imgTipo" ng-change="optDefault()"/> 
          <div class="item-content">Por defecto</div>
          <i class="radio-icon ion-checkmark"></i>            
        </label>
        <label for="galeria" class="item item-radio">
-         <input name="galeria" type="radio" class="radio-icon ion-checkmark" ng-model="formCandy.imgTipo" value="galeria" /> 
+         <input name="galeria" type="radio" class="radio-icon ion-checkmark" ng-model="formCandy.imgTipo" value="galeria" ng-change="optGallery()"/> 
          <div class="item-content">Desde galeria</div>
          <i class="radio-icon ion-checkmark"></i>            
        </label>
        <label for="camara" class="item item-radio">
-         <input name="camara" type="radio" class="radio-icon ion-checkmark" ng-model="formCandy.imgTipo" value="camara" /> 
+         <input name="camara" type="radio" class="radio-icon ion-checkmark" ng-model="formCandy.imgTipo" value="camara" ng-change="optCamera()"/> 
          <div class="item-content">Capturar imagen</div>
          <i class="radio-icon ion-checkmark"></i>            
        </label>        
