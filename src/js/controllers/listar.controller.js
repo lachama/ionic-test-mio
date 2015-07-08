@@ -1,8 +1,6 @@
 angular.module('starter.controllers')
 
 .controller('ListarCtrl', function($scope, obtenerLista) {
-  console.log("-----------2");
-  console.log(obtenerLista.readData());
   $scope.candies = obtenerLista.readData();
 
   // $scope.candies = [

@@ -96,19 +96,11 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova', 'firebas
 .factory("obtenerLista", ["$firebaseArray", function($firebaseArray){
   var myFirebaseRef = new Firebase("https://blazing-inferno-5723.firebaseIO.com/"); 
   var interfaz = {
-    writeData: function(datoss) {
-      myFirebaseRef.push(datoss); 
+    writeData: function(datos) {
+      myFirebaseRef.push(datos); 
     },
     readData: function() {
-      console.log("-------1");
       return  $firebaseArray(myFirebaseRef);
-      // myFirebaseRef.once("value", function(snapshot) {
-      //   console.log("entro!");
-      //   console.log(snapshot.val());
-      //   return snapshot.val();
-      // }, function (errorObject) {
-      //   return null;
-      // });
     }
   };
   return interfaz;
@@ -149,8 +141,7 @@ angular.module('starter.controllers')
   $scope.addCandy = function() {
     //$scope.listCandies.push($scope.formCandy);
     //$scope.formCandy = "";
-    console.log("-----------------");
-    console.log($scope.formCandy);
+    $scope.formCandy.imgTipo === "porDefecto"?$scope.formCandy.imgTipo = "img/ionic.png":$scope.formCandy.imgTipo = "img/ionic.png";
     obtenerLista.writeData($scope.formCandy);
     $scope.formCandy = "";
   };
@@ -170,8 +161,6 @@ angular.module('starter.controllers')
 angular.module('starter.controllers')
 
 .controller('ListarCtrl', ["$scope", "obtenerLista", function($scope, obtenerLista) {
-  console.log("-----------2");
-  console.log(obtenerLista.readData());
   $scope.candies = obtenerLista.readData();
 
   // $scope.candies = [

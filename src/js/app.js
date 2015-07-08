@@ -96,19 +96,11 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova', 'firebas
 .factory("obtenerLista", function($firebaseArray){
   var myFirebaseRef = new Firebase("https://blazing-inferno-5723.firebaseIO.com/"); 
   var interfaz = {
-    writeData: function(datoss) {
-      myFirebaseRef.push(datoss); 
+    writeData: function(datos) {
+      myFirebaseRef.push(datos); 
     },
     readData: function() {
-      console.log("-------1");
       return  $firebaseArray(myFirebaseRef);
-      // myFirebaseRef.once("value", function(snapshot) {
-      //   console.log("entro!");
-      //   console.log(snapshot.val());
-      //   return snapshot.val();
-      // }, function (errorObject) {
-      //   return null;
-      // });
     }
   };
   return interfaz;
