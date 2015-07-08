@@ -101,7 +101,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova', 'firebas
     },
     readData: function() {
       console.log("-------1");
-      return  $firebaseArray;
+      return  $firebaseArray(myFirebaseRef);
       // myFirebaseRef.once("value", function(snapshot) {
       //   console.log("entro!");
       //   console.log(snapshot.val());
@@ -172,7 +172,7 @@ angular.module('starter.controllers')
 .controller('ListarCtrl', ["$scope", "obtenerLista", function($scope, obtenerLista) {
   console.log("-----------2");
   console.log(obtenerLista.readData());
-
+  $scope.candies = obtenerLista.readData();
 
   // $scope.candies = [
   //   { 

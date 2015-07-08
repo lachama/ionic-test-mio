@@ -101,7 +101,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova', 'firebas
     },
     readData: function() {
       console.log("-------1");
-      return  $firebaseArray;
+      return  $firebaseArray(myFirebaseRef);
       // myFirebaseRef.once("value", function(snapshot) {
       //   console.log("entro!");
       //   console.log(snapshot.val());
