@@ -11,3 +11,7 @@ controlerAS:""
 gulp plumber: permite capturar los errores en medio del gulp watch
 
 errores de syntax: plugin para sublime sublimelinter y jshint (instalar npm install -g jshint)
+otro plugin es jscs (se le definen reglas para el codigo)
+
+
+Las directivas son las que se meten con el DOM
